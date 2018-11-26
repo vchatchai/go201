@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"net"
+	"strings"
 )
 
 const CONN_TYPE = "tcp"
@@ -29,12 +30,22 @@ func TcpServer() {
 }
 
 func handleRequest(conn net.Conn) {
-	reader := bufio.NewReader(conn)
-	message, err := reader.ReadString('\n')
-	if err != nil {
-		log.Fatalln(err)
-	}
-	log.Println(message)
+	for {
 
-	conn.Close()
+		reader := bufio.NewReader(conn)
+		message, err := reader.ReadString('\n')
+		if err != nil {
+			log.Fatalln(err)
+		}
+		log.Println(message)
+
+		conn.Write([]byte("Response:" + message + ": "))
+
+		if strings.TrimSpace(message) == "q" {
+			log.Println("System exiting")
+			conn.Close()
+			return
+		}
+	}
+
 }
