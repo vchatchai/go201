@@ -2,6 +2,24 @@
 
 
 [[projects]]
+  digest = "1:769b12bbef627a9e062ca5abcd7c1fedc640c1ba05b4c3b4b0d7ffe8937652d4"
+  name = "github.com/astaxie/beego"
+  packages = [
+    ".",
+    "config",
+    "context",
+    "context/param",
+    "grace",
+    "logs",
+    "session",
+    "toolbox",
+    "utils",
+  ]
+  pruneopts = "UT"
+  revision = "b0e2bbce2a45fcfda684b47968387fa0866ada06"
+  version = "v1.11.0"
+
+[[projects]]
   digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
   name = "github.com/pkg/errors"
   packages = ["."]
@@ -29,6 +47,17 @@
   version = "v1.1.2"
 
 [[projects]]
+  branch = "master"
+  digest = "1:e3d2db9bc633f4635e6418caf0b0734c43821ecd59105d1798458c6ae4d227fd"
+  name = "golang.org/x/crypto"
+  packages = [
+    "acme",
+    "acme/autocert",
+  ]
+  pruneopts = "UT"
+  revision = "3d3f9f413869b949e48070b5bc593aa22cc2b8f2"
+
+[[projects]]
   digest = "1:8029e9743749d4be5bc9f7d42ea1659471767860f0cdc34d37c3111bd308a295"
   name = "golang.org/x/text"
   packages = [
@@ -43,10 +72,19 @@
   revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
   version = "v0.3.0"
 
+[[projects]]
+  digest = "1:342378ac4dcb378a5448dd723f0784ae519383532f5e70ade24132c4c8693202"
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
+  version = "v2.2.1"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/astaxie/beego",
     "github.com/robbert229/jwt",
     "github.com/spf13/afero",
   ]
