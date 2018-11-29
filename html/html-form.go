@@ -12,8 +12,8 @@ import (
 )
 
 type User struct {
-	Username string
-	Password string
+	Username string `valid:"alpha,required"`
+	Password string `valid:"alpha,required"`
 }
 
 func login(w http.ResponseWriter, r *http.Request) {
@@ -33,7 +33,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		decodeErr := decoder.Decode(user, r.PostForm)
 
 		if decodeErr != nil {
-			log.Printf("error mapping parsed form data to struct:", decodeErr)
+			log.Printf("error mapping parsed form data to struct: %s", decodeErr)
 		}
 
 		fmt.Fprintf(w, "User: %s Password: %s", user.Username, user.Password)
