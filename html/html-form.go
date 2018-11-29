@@ -3,10 +3,18 @@ package html
 import (
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
+
+	"github.com/gorilla/schema"
 
 	"github.com/gorilla/mux"
 )
+
+type User struct {
+	Username string
+	Password string
+}
 
 func login(w http.ResponseWriter, r *http.Request) {
 
@@ -17,10 +25,18 @@ func login(w http.ResponseWriter, r *http.Request) {
 		template.Execute(w, nil)
 	} else if r.Method == "POST" {
 		r.ParseForm()
-		user := r.FormValue("username")
-		password := r.FormValue("password")
 
-		fmt.Fprintf(w, "User: %s Password: %s", user, password)
+		user := new(User)
+
+		decoder := schema.NewDecoder()
+
+		decodeErr := decoder.Decode(user, r.PostForm)
+
+		if decodeErr != nil {
+			log.Printf("error mapping parsed form data to struct:", decodeErr)
+		}
+
+		fmt.Fprintf(w, "User: %s Password: %s", user.Username, user.Password)
 	}
 
 }
