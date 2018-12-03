@@ -73,6 +73,14 @@
   revision = "81ddea8e91eecffef557c5e4ce8e78a1d472d7d7"
   version = "v2.0.0"
 
+[[projects]]
+  digest = "1:db932d4696ed23e244a69a60d258a23816aceb012a95e4c3871c711d4fc120e7"
+  name = "gopkg.in/boj/redistore.v1"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "fc113767cd6b051980f260d6dbe84b2740c46ab0"
+  version = "v1.2"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
@@ -83,6 +91,7 @@
     "github.com/gorilla/schema",
     "github.com/gorilla/sessions",
     "github.com/robbert229/jwt",
+    "gopkg.in/boj/redistore.v1",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
