@@ -38,7 +38,7 @@ func upload(w http.ResponseWriter, r *http.Request) {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	uploadfile, err := template.ParseFiles("upload-file.html")
+	uploadfile, err := template.ParseFiles("static/upload-file.html")
 	if err != nil {
 		panic(err)
 	}

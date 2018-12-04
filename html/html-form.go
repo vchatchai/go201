@@ -16,11 +16,11 @@ type User struct {
 	Password string `valid:"alpha,required"`
 }
 
-func login(w http.ResponseWriter, r *http.Request) {
+func loginForm(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 
-		template, _ := template.ParseFiles("login-form.html")
+		template, _ := template.ParseFiles("static/login-form.html")
 
 		template.Execute(w, nil)
 	} else if r.Method == "POST" {
@@ -44,7 +44,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 func HtmlForm() {
 	router := mux.NewRouter()
 
-	router.HandleFunc("/login", login)
+	router.HandleFunc("/login", loginForm)
 
 	err := http.ListenAndServe(CONN_HOST+":"+CONN_PORT, router)
 
