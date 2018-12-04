@@ -64,3 +64,7 @@
 [[constraint]]
   name = "github.com/gorilla/securecookie"
   version = "1.1.1"
+
+[[constraint]]
+  name = "github.com/patrickmn/go-cache"
+  version = "2.1.0"
