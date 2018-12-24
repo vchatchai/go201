@@ -17,12 +17,15 @@ const (
 var client *mongo.Client
 
 func init() {
+
+}
+
+func ConnectMongoDB() {
 	fmt.Println("Init")
 	client, err := mongo.NewClient(MONGO_DB_URL)
 	if err != nil {
 		panic(err)
 	}
-	// ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	ctx := context.TODO()
 
 	err = client.Connect(ctx)
@@ -55,7 +58,7 @@ func init() {
 			if err != nil {
 				panic(err)
 			}
-			fmt.Println(row)
+			fmt.Println(row.String())
 		}
 
 		collections.Close(ctx)
@@ -64,7 +67,4 @@ func init() {
 	fmt.Println("Inited")
 
 	client.Disconnect(ctx)
-}
-
-func ConnectMongoDB() {
 }
