@@ -7,17 +7,7 @@ import (
 	"github.com/mongodb/mongo-go-driver/bson"
 )
 
-func ReadRecord() {
-	session, err := client.StartSession()
-	if err != nil {
-		panic(err)
-	}
-
-	err = session.StartTransaction()
-	if err != nil {
-		panic(err)
-	}
-
+func Update() {
 	database := client.Database("test")
 	collection := database.Collection("data")
 
@@ -29,11 +19,15 @@ func ReadRecord() {
 	}
 
 	for cursor.Next(context.TODO()) {
-		row, err := cursor.DecodeBytes()
+		raw := bson.M{}
+		// raw, err := cursor.DecodeBytes()
+		cursor.Decode(&raw)
 		if err != nil {
 			panic(err)
 		}
-		fmt.Println(row.String())
+
+		fmt.Printf("%v", raw)
+		collection.UpdateOne(context.TODO(), filter, raw)
 	}
 
 }
