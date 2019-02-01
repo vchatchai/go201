@@ -3,6 +3,7 @@ package routers
 import (
 	"github.com/astaxie/beego"
 	"github.com/vchatchai/go201/my-first-beego-project/controllers"
+	"github.com/vchatchai/go201/my-first-beego-project/filters"
 )
 
 func init() {
@@ -12,4 +13,5 @@ func init() {
 	beego.Router("/home", &controllers.SessionController{}, "get:Home")
 	beego.Router("/login", &controllers.SessionController{}, "get:Login")
 	beego.Router("/logout", &controllers.SessionController{}, "get:Logout")
+	beego.InsertFilter("/*", beego.BeforeRouter, filters.LogManager)
 }
