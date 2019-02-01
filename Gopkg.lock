@@ -18,7 +18,7 @@
   version = "v9"
 
 [[projects]]
-  digest = "1:5bac76509f3a58c157a95bab9ca8c742c1994ce72ae383837f98d487bb9fe9f3"
+  digest = "1:ccc746968623fb4c05432607a8634d8d09837a2de6de9ac9a1bc46d96fc63679"
   name = "github.com/astaxie/beego"
   packages = [
     ".",
@@ -28,6 +28,7 @@
     "grace",
     "logs",
     "session",
+    "session/redis",
     "toolbox",
     "utils",
   ]
@@ -96,6 +97,17 @@
   packages = ["."]
   pruneopts = "UT"
   revision = "2e65f85255dbc3072edf28d6b5b8efc472979f5a"
+
+[[projects]]
+  digest = "1:38ec74012390146c45af1f92d46e5382b50531247929ff3a685d2b2be65155ac"
+  name = "github.com/gomodule/redigo"
+  packages = [
+    "internal",
+    "redis",
+  ]
+  pruneopts = "UT"
+  revision = "9c11da706d9b7902c6da69c592f75637793fe121"
+  version = "v2.0.0"
 
 [[projects]]
   digest = "1:236d7e1bdb50d8f68559af37dbcf9d142d56b431c9b2176d41e2a009b664cda8"
@@ -606,6 +618,7 @@
   input-imports = [
     "github.com/asaskevich/govalidator",
     "github.com/astaxie/beego",
+    "github.com/astaxie/beego/session/redis",
     "github.com/auth0/go-jwt-middleware",
     "github.com/dgrijalva/jwt-go",
     "github.com/golang/protobuf/proto",
